@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted]
+    runs-on: 2567484640b5
 
     steps:
     - name: Checkout repository
