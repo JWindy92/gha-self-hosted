@@ -7,8 +7,11 @@ echo "REPO ${REPOSITORY}"
 echo "ACCESS_TOKEN ${ACCESS_TOKEN}"
 
 REG_TOKEN=$(curl -X POST -H "Authorization: token ${ACCESS_TOKEN}" -H "Accept: application/vnd.github+json" https://api.github.com/repos/${REPOSITORY}/actions/runners/registration-token | jq .token --raw-output)
-
+echo "REG_TOKEN ${REG_TOKEN}"
 cd /home/docker/actions-runner
+echo "Actions Runner Directory: $(pwd)"
+ls -la
+ls -la bin | grep "config.sh"
 
 ./config.sh --url https://github.com/${REPOSITORY} --token ${REG_TOKEN}
 
